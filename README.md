@@ -1,15 +1,16 @@
 # Ram Hemareddy AWS CICD Pipeline Code Deployment to AWS EC2 Instance
 
 
-<b>User Data for Dependencies installations for AMAZON Linux 2:-</b>
+<b>User Data for Dependencies installations for ubuntu Linux 2:-</b>
 
 #!/bin/bash<br />
-sudo yum -y update<br />
-sudo yum -y install ruby<br />
-sudo yum -y install wget<br />
-cd /home/ec2-user<br />
+sudo apt update && sudo apt -y upgrade<br />
+sudo apt -y install ruby-full<br />
+sudo apt -y install wget<br />
+cd /home/ubuntu<br />
 wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/install<br />
-sudo chmod +x ./install<br />
 sudo ./install auto<br />
-sudo yum install -y python-pip<br />
-sudo pip install awscli<br />
+sudo apt -y install python3-pip<br />
+pip3 install --user awscli<br />
+echo 'export PATH=$PATH:~/.local/bin' >> ~/.bashrc<br />
+source ~/.bashrc<br />
